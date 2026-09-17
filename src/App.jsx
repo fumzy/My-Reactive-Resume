@@ -1,70 +1,76 @@
 import { useState } from "react";
-import { CORE_CONCEPTS } from "./data";
+import { RESUME_CONTENT, RESUME_SECTIONS } from "./data";
 import { Header } from "./components/Header/Header.jsx";
 import { CoreConcepts } from "./components/CoreConcepts";
-import TabButton from "./components/TabButton.jsx";
-import { EXAMPLES } from "./data.js";
+import { LetsConnect } from "./components/LetsConnect/LetsConnect.jsx";
 
 function App() {
-  const [selectedContent, setSelectedContent] = useState();
-
-  function handleSelect(selectedButton) {
-    setSelectedContent(selectedButton);
-  }
+  const [selectedSection, setSelectedSection] = useState("about");
+  const selectedContent = RESUME_CONTENT[selectedSection];
 
   return (
     <div>
       <Header />
       <main>
+        <section className="hero-actions" aria-label="Resume actions">
+          <a className="button primary" href="/Fumnanya-Resume.pdf" download>
+            Download Resume
+          </a>
+          <a className="button secondary" href="mailto:nanya.loveth@gmail.com">
+            Contact Me
+          </a>
+        </section>
         <section id="core-concepts">
-          <h2>Core Concepts</h2>
+          <h2>Explore My Resume</h2>
           <ul>
-            {CORE_CONCEPTS.map((concept, index) => (
-              <CoreConcepts key={index} {...concept} />
+            {RESUME_SECTIONS.map((section) => (
+              <CoreConcepts
+                key={section.id}
+                {...section}
+                isSelected={selectedSection === section.id}
+                onSelect={() => setSelectedSection(section.id)}
+              />
             ))}
           </ul>
         </section>
         <section id="examples">
-          <h2>Examples</h2>
-          <menu>
-            <TabButton
-              isSelected={selectedContent === "components"}
-              onSelect={() => handleSelect("components")}
-            >
-              Component
-            </TabButton>
-            <TabButton
-              isSelected={selectedContent === "jsx"}
-              onSelect={() => handleSelect("jsx")}
-            >
-              JSX
-            </TabButton>
-            <TabButton
-              isSelected={selectedContent === "props"}
-              onSelect={() => handleSelect("props")}
-            >
-              Props
-            </TabButton>
-            <TabButton
-              isSelected={selectedContent === "state"}
-              onSelect={() => handleSelect("state")}
-            >
-              State
-            </TabButton>
-          </menu>
-          {!selectedContent ? (
-            <p>Please select a tab to view the example.</p>
-          ) : (
-            <div id="tab-content">
-              <h3>{EXAMPLES[selectedContent].title}</h3>
-              <p>{EXAMPLES[selectedContent].description}</p>
-              <pre>
-                <code>{EXAMPLES[selectedContent].code}</code>
-              </pre>
-            </div>
-          )}
+          <div id="tab-content">
+            <h3>{selectedContent.title}</h3>
+            {selectedContent.paragraphs?.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+            {selectedContent.items && (
+              <ul>
+                {selectedContent.items.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            )}
+            {selectedContent.groups && (
+              <div className="skill-groups">
+                {selectedContent.groups.map(([label, details]) => (
+                  <p key={label}><strong>{label}:</strong> {details}</p>
+                ))}
+              </div>
+            )}
+            {selectedContent.roles && (
+              <div className="experience-list">
+                {selectedContent.roles.map((role) => (
+                  <article key={`${role.company}-${role.title}`}>
+                    <h4>{role.title} | {role.company}</h4>
+                    <p className="role-dates">{role.dates}</p>
+                    <ul>
+                      {role.bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}
+                    </ul>
+                  </article>
+                ))}
+              </div>
+            )}
+          </div>
         </section>
+        <LetsConnect />
       </main>
+      <footer>© {new Date().getFullYear()} Fumnanya Loveth Adeyanju</footer>
     </div>
   );
 }

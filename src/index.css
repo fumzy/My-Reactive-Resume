@@ -1,122 +1,536 @@
-@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&family=Roboto+Condensed:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap");
+
+/* ========================================
+   GLOBAL
+======================================== */
 
 * {
   box-sizing: border-box;
 }
 
 html {
-  font-family: "Quicksand", sans-serif;
+  font-family: "DM Sans", sans-serif;
   line-height: 1.5;
 
-  color: #ebe7ef;
-  background: radial-gradient(#280a48, #20043d);
+  color: #f5eef2;
+
+  background: radial-gradient(
+    circle at 50% -10%,
+    #3a2135 0%,
+    #241521 30%,
+    #160f18 60%,
+    #0f0a10 100%
+  );
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
-  min-height: 80rem;
+
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
 }
 
 main {
   width: 90%;
-  max-width: 50rem;
+  max-width: 68rem;
   margin: auto;
 }
 
-#core-concepts {
-  padding: 2rem;
-  border-radius: 6px;
-  background-color: #140524;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+/* ========================================
+   HERO BUTTONS
+======================================== */
+
+.hero-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 1rem;
+
+  margin: -2rem 0 3.5rem;
 }
 
-main h2 {
-  text-align: center;
-  font-family: "Roboto Condensed", sans-serif;
-  margin: 0 0 1.5rem 0;
-  color: #a18aba;
+.button,
+.social-links a {
+  display: inline-block;
+
+  padding: 0.8rem 1.5rem;
+
+  border: 1px solid #62475b;
+  border-radius: 9px;
+
+  color: #f5eef2;
+  background-color: transparent;
+
+  text-decoration: none;
+  font-weight: 600;
+
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease;
 }
+
+.button:hover,
+.social-links a:hover {
+  transform: translateY(-2px);
+}
+
+/* Primary button */
+
+.button.primary {
+  color: #1b1118;
+
+  border-color: #d6b77a;
+
+  background: linear-gradient(135deg, #e3c98f, #d6b77a);
+
+  box-shadow: 0 8px 24px rgba(214, 183, 122, 0.15);
+}
+
+.button.primary:hover {
+  background: linear-gradient(135deg, #ead39e, #d9ba7c);
+
+  box-shadow: 0 10px 30px rgba(214, 183, 122, 0.22);
+}
+
+/* Secondary button */
+
+.button.secondary {
+  color: #f5eef2;
+
+  border-color: #725565;
+
+  background-color: rgba(41, 29, 40, 0.5);
+}
+
+.button.secondary:hover {
+  border-color: #c98791;
+
+  background-color: rgba(201, 135, 145, 0.08);
+}
+
+/* ========================================
+   SECTION TITLES
+======================================== */
+
+main h2 {
+  margin: 0 0 2rem;
+
+  text-align: center;
+
+  font-family: "Playfair Display", serif;
+  font-size: 1.7rem;
+  font-weight: 600;
+
+  color: #d6b77a;
+
+  letter-spacing: 0.01em;
+}
+
+/* ========================================
+   EXPLORE MY RESUME
+======================================== */
+
+#core-concepts {
+  padding: 2.5rem;
+
+  border: 1px solid #493443;
+  border-radius: 16px;
+
+  background: linear-gradient(
+    145deg,
+    rgba(34, 23, 33, 0.94),
+    rgba(25, 17, 24, 0.94)
+  );
+
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+/* Resume card row */
 
 #core-concepts ul {
   list-style: none;
+
   padding: 0;
   margin: 0;
+
   display: flex;
-  gap: 2rem;
-  flex-wrap: wrap;
+
+  gap: 1.25rem;
+
   justify-content: center;
 }
 
+/* Resume card wrapper */
+
 #core-concepts li {
-  width: 10rem;
+  flex: 1;
+
+  min-width: 0;
+
   text-align: center;
 }
 
-#core-concepts li img {
-  height: 4rem;
-  width: 6rem;
-  object-fit: cover;
+/* ========================================
+   RESUME CARDS
+======================================== */
+
+#core-concepts .resume-card {
+  width: 100%;
+  min-height: 14rem;
+
+  padding: 1.5rem 1rem;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: flex-start;
+
+  color: #f5eef2;
+
+  border: 1px solid #493443;
+  border-radius: 12px;
+
+  background: linear-gradient(145deg, #291d28, #211720);
+
+  font: inherit;
+
+  cursor: pointer;
+
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    background-color 0.25s ease,
+    box-shadow 0.25s ease;
 }
+
+/* Card hover */
+
+#core-concepts .resume-card:hover {
+  transform: translateY(-5px);
+
+  border-color: #89627c;
+
+  background: linear-gradient(145deg, #30222e, #271b25);
+
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.22);
+}
+
+/* Selected card */
+
+#core-concepts .resume-card.selected {
+  border-color: #b784a7;
+
+  background: linear-gradient(145deg, #352432, #291d28);
+
+  box-shadow:
+    0 0 0 1px rgba(183, 132, 167, 0.12),
+    0 14px 32px rgba(0, 0, 0, 0.2);
+}
+
+/* ========================================
+   CARD ICONS
+======================================== */
+
+#core-concepts li img {
+  width: 4rem;
+  height: 4rem;
+
+  object-fit: contain;
+
+  margin-bottom: 1rem;
+}
+
+/* ========================================
+   CARD TITLES
+======================================== */
 
 #core-concepts li h3 {
+  min-height: 3rem;
+
   margin: 0.5rem 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  color: #f5eef2;
+
+  font-size: 1rem;
+  font-weight: 600;
 }
+
+/* ========================================
+   CARD DESCRIPTIONS
+======================================== */
 
 #core-concepts li p {
-  font-size: 0.9rem;
+  margin: 0;
+
+  color: #b9a8b2;
+
+  font-size: 0.88rem;
+  line-height: 1.6;
 }
+
+/* ========================================
+   SELECTED RESUME CONTENT
+======================================== */
 
 #examples {
-  margin: 3rem auto;
-}
-
-#examples h2 {
-  text-align: left;
-}
-
-#examples menu {
-  margin: 1rem 0;
-  padding: 0;
-  display: flex;
-  gap: 0.5rem;
-  list-style: none;
-}
-
-#examples menu button {
-  padding: 0.5rem 1rem;
-  border: none;
-  border-radius: 6px;
-  background-color: transparent;
-  color: #a18aba;
-  font-family: "Roboto Condensed", sans-serif;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-}
-
-#examples menu button:hover {
-  background-color: #1b082f;
-  color: #ebe7ef;
-}
-
-#examples menu button.active {
-  background-color: #7925d3;
-  color: #ebe7ef;
+  margin: 2rem auto 3rem;
 }
 
 #tab-content {
-  padding: 1rem;
-  border-radius: 6px;
-  background-color: #2f1d43;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  min-height: 12rem;
+
+  padding: 2.25rem;
+
+  color: #f5eef2;
+
+  border: 1px solid #493443;
+  border-radius: 16px;
+
+  background: linear-gradient(145deg, #211720, #191118);
+
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
 }
+
+/* Content title */
 
 #tab-content h3 {
-  margin: 0;
+  margin: 0 0 1.25rem;
+
+  color: #d6b77a;
+
+  font-family: "Playfair Display", serif;
+
+  font-size: 1.4rem;
+  font-weight: 600;
 }
 
-#tab-content code {
-  font-size: 1rem;
+/* Content text */
+
+#tab-content p {
+  color: #d1c3cb;
+
+  line-height: 1.75;
+}
+
+#tab-content ul {
+  padding-left: 1.25rem;
+
+  color: #d1c3cb;
+}
+
+#tab-content li {
+  margin-bottom: 0.4rem;
+}
+
+/* ========================================
+   TECHNICAL SKILLS
+======================================== */
+
+.skill-groups p {
+  margin: 0.9rem 0;
+}
+
+.skill-groups strong {
+  color: #d6b77a;
+
+  font-weight: 600;
+}
+
+/* ========================================
+   EXPERIENCE
+======================================== */
+
+.experience-list article {
+  padding: 1.4rem 0;
+
+  border-bottom: 1px solid #493443;
+}
+
+.experience-list article:last-child {
+  border-bottom: 0;
+}
+
+.experience-list h4 {
+  margin: 0;
+
+  color: #e0c58d;
+
+  font-size: 1.08rem;
+  font-weight: 600;
+}
+
+.experience-list .role-dates {
+  margin: 0.3rem 0 0.8rem;
+
+  color: #c98791;
+
+  font-size: 0.9rem;
+  font-style: normal;
+}
+
+/* ========================================
+   EDUCATION / CERTIFICATIONS
+======================================== */
+
+.education-list article {
+  padding: 1.25rem 0;
+
+  border-bottom: 1px solid #493443;
+}
+
+.education-list article:last-child {
+  border-bottom: 0;
+}
+
+.education-list h4 {
+  margin: 0 0 0.4rem;
+
+  color: #d6b77a;
+}
+
+/* ========================================
+   LET'S CONNECT
+======================================== */
+
+.connect {
+  margin: 3rem 0;
+
+  padding: 2.5rem;
+
+  text-align: center;
+
+  border: 1px solid #493443;
+  border-radius: 16px;
+
+  background: linear-gradient(
+    145deg,
+    rgba(34, 23, 33, 0.94),
+    rgba(25, 17, 24, 0.94)
+  );
+
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.22);
+}
+
+.connect h2 {
+  margin-bottom: 0.6rem;
+}
+
+.connect p {
+  color: #b9a8b2;
+}
+
+/* Social links */
+
+.social-links {
+  display: flex;
+
+  justify-content: center;
+
+  gap: 1rem;
+
+  margin-top: 1.5rem;
+}
+
+.social-links a {
+  color: #f5eef2;
+
+  border-color: #62475b;
+
+  background-color: #291d28;
+}
+
+.social-links a:hover {
+  color: #1b1118;
+
+  border-color: #d6b77a;
+
+  background-color: #d6b77a;
+
+  box-shadow: 0 8px 22px rgba(214, 183, 122, 0.14);
+}
+
+/* ========================================
+   FOOTER
+======================================== */
+
+footer {
+  padding: 2rem;
+
+  color: #8e7d87;
+
+  text-align: center;
+
+  font-size: 0.85rem;
+}
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 850px) {
+  #core-concepts ul {
+    flex-wrap: wrap;
+  }
+
+  #core-concepts li {
+    flex: 1 1 calc(50% - 1rem);
+  }
+}
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 600px) {
+  main {
+    width: 92%;
+  }
+
+  .hero-actions,
+  .social-links {
+    flex-wrap: wrap;
+  }
+
+  #core-concepts {
+    padding: 1.5rem;
+  }
+
+  #core-concepts ul {
+    flex-direction: column;
+  }
+
+  #core-concepts li {
+    width: 100%;
+  }
+
+  #core-concepts .resume-card {
+    min-height: 12rem;
+  }
+
+  #tab-content {
+    padding: 1.5rem;
+  }
+
+  .connect {
+    padding: 1.5rem;
+  }
 }

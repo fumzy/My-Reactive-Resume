@@ -1,21 +1,16 @@
-import reactImages from "../../assets/react-core-concepts.png";
+import fumnanyaImg from "../../assets/fumnanya.jpeg";
 import "./Header.css";
 
-const reactDescriptions = ["Fundamental", "Crucial", "Core"];
-
-function genRandomInt(max) {
-  return Math.floor(Math.random() * (max + 1));
-}
-
 export function Header() {
-  const description = reactDescriptions[genRandomInt(2)];
   return (
     <header>
-      <img src={reactImages} alt="Stylized atom" />
-      <h1>React Essentials</h1>
+      <img src={fumnanyaImg} alt="Fumnanya Loveth Adeyanju" />
+      <h1>Fumnanya Loveth Adeyanju</h1>
+      <h2>Senior Software Engineer</h2>
+      <p className="headline">.NET / React / Angular / TypeScript / Azure</p>
       <p>
-        {description} React concepts you will need for almost any app you are
-        going to build!
+        Building scalable web and cloud applications with a focus on
+        performance, reliability, and clean software design.
       </p>
     </header>
   );
