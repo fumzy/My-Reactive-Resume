@@ -5,6 +5,7 @@ export function CoreConcepts({ image, title, description, isSelected, onSelect }
         className={isSelected ? "resume-card selected" : "resume-card"}
         onClick={onSelect}
         type="button"
+        aria-pressed={isSelected}
       >
         <img src={image} alt="" />
         <h3>{title}</h3>
